@@ -44,7 +44,8 @@ inquirer.prompt([
         }])
 
         .then(response => {
-            employeeArray.push(new Engineer(response.name, response.id, response.email, response.gihub))
+            var engineerData = new Engineer(response.name, response.id, response.email, response.github)
+            employeeArray.push(engineerData)
             console.log(employeeArray)
         })
     };    
@@ -74,7 +75,8 @@ inquirer.prompt([
             }])
 
         .then(response => {
-            employeeArray.push(new Manager(response.name, response.id, response.email, response.officeNumber))
+            var managerData = (new Manager(response.name, response.id, response.email, response.officeNumber))
+            employeeArray.push(managerData)
             console.log(employeeArray)
         })
     };    
@@ -105,7 +107,8 @@ inquirer.prompt([
             }])
 
         .then(response => {
-            employeeArray.push(new Intern (response.name, response.id, response.email, response.school))
+            var internData = (new Intern (response.name, response.id, response.email, response.school))
+            employeeArray.push(internData)
             console.log(employeeArray)
             addEmployees();
         })
