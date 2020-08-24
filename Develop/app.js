@@ -10,7 +10,116 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+var employeeArray = [];
 
+inquirer.prompt([
+    {
+        type: "list",
+        message: "What is your role?: ",
+        name: "role",
+        choices: ["Engineer", "Manager", "Intern"]
+    }])
+
+    .then((data) => {
+        if (data.role === "Engineer") {
+            inquirer.prompt([{
+                type: "input",
+                message: "What is your name?",
+                name: "name"
+            },
+        {
+            type: "input",
+            message: "What is your employee ID number?: ",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is your email address?: ",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is your GitHub address?: ",
+            name: "github"
+        }])
+
+        .then(response => {
+            employeeArray.push(new Engineer(response.name, response.id, response.email, response.gihub))
+            console.log(employeeArray)
+        })
+    };    
+
+        if (data.role === "Manager") {
+            inquirer.prompt([{
+                type: "input",
+                message: "What is your name?",
+                name: "name"
+            },
+            {
+                type: "input",
+                message: "What is your employee ID number?: ",
+                name: "id"
+            },
+
+            {
+                type: "input",
+                message: "What is your email address?: ",
+                name: "email"
+            },
+
+            {
+                type: "input",
+                message: "What is your office number?: ",
+                name: "officeNumber"
+            }])
+
+        .then(response => {
+            employeeArray.push(new Manager(response.name, response.id, response.email, response.officeNumber))
+            console.log(employeeArray)
+        })
+    };    
+
+        if (data.role === "Intern") {
+            inquirer.prompt([{
+                type: "input",
+                message: "What is your name?",
+                name: "name"
+            },
+
+            {
+                type: "input",
+                message: "What is your employee ID number?: ",
+                name: "id"
+            },
+
+            {
+                type: "input",
+                message: "What is your email address?: ",
+                name: "email"
+            },
+
+            {
+                type: "input",
+                message: "What school do you attend?: ",
+                name: "school"
+            }])
+
+        .then(response => {
+            employeeArray.push(new Intern (response.name, response.id, response.email, response.school))
+            console.log(employeeArray)
+            addEmployees();
+        })
+    }
+
+});
+    function addEmployees() {
+        fs.writeFile("team.html", JSON.stringify(employeeArray), function (error) {
+            console.log(employeeArray)
+            if (error) throw error
+        })}
+    
+
+    
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
