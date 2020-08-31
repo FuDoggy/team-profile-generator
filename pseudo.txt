@@ -1,0 +1,9 @@
+Ask the user (manager) their name, emp ID, email, and office number
+Ask the manager if they want to add another member (engineer, intern) to their team, or done adding members
+Loop through asking manager if they want another member until they choose "done adding members"
+If add another member, which member, engineer or intern?
+If engineer, prompt manager for engineer's name, emp ID, email, github
+    a.  Store responses in variables and prepare them for rendering
+If intern, prompt manager for intern's name, emp ID, email, school
+    a.  Store responses in variable and prepare them for rendering
+Once manager chooses "done adding members", return stored team member info back to manager
